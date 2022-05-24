@@ -1,0 +1,72 @@
+{{> header}}
+<body>
+    {{#if eliminado}}
+
+    <div id="alerta-eliminado" class="alert alert-warning d-flex align-items-center alert-dismissible fade show" role="alert">
+      <div>
+        Ya se a eliminado tu participación, esperemos que participes en la próxima. Suerte {{eliminado}}!!!
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+    {{/if}}
+
+    <h1>Skate Park</h1>
+
+    <div class="py-4">
+      <h2>Lista de participantes</h2>
+
+      <hr />
+
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Años de experiencia</th>
+            <th scope="col">Especialidad</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {{#each participantes as |participante|}}
+
+            <tr>
+
+            {{> filaParticipante participante=participante}}
+
+            {{#if participante.estado}}
+              <td class="text-success font-weight-bold">Aprobado</td>
+            {{else}}
+              <td class="text-warning font-weight-bold">En revisión</td>
+            {{/if}}
+            
+            </tr>
+
+          {{/each}}
+          
+          {{!-- <tr>
+            <th scope="row">2</th>
+            <td><img src="assets/imgs/Evelien.jpg" alt="Evelien" height="100vh"></td>
+            <td>Evelien Bouilliart</td>
+            <td>10</td>
+            <td>Heelflip</td>
+            <td class="text-success font-weight-bold">Aprobado</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td><img src="assets/imgs/Danny.jpg" alt="Danny" height="100vh"></td>
+            <td>Danny Way</td>
+            <td>8</td>
+            <td>Ollie</td>
+            <td class="text-warning font-weight-bold">En revisión</td>
+          </tr> --}}
+        
+        </tbody>
+      </table>
+      <a href="/login">Iniciar Sesión</a> |
+      <a href="/registro">Registrarme</a>
+    </div>
+{{> footer}}
