@@ -12,7 +12,7 @@ const port = 3000;
 
 const llavePrivada = "danilo";
 
-app.listen(port, () => console.log(`Server ON, http://localhost:${port}`));
+app.listen(process.env.PORT || port, () => console.log(`Server ON, http://localhost:${port}`));
 
 
 // Middleware
