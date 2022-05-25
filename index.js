@@ -172,7 +172,7 @@ app.post('/skater', async (req, res) => {
             if (error) {
                 console.log(error);
                 await eliminarSkater(respuesta.rows[0].id);
-                throw error;
+                return res.status(500).send(error);
             }
         });
 
@@ -232,7 +232,7 @@ app.delete('/skater', async (req, res) => {
         fs.rm(`${__dirname}/assets/imgs/${nombreFoto}`, (error) => {
             if (error) {
                 console.log(error);
-                res.send(error);
+                return res.send(error);
             }
         });
 
