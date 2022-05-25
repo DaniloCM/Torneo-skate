@@ -12,8 +12,6 @@ const { listarSkaters, nuevoSkater, actualizarSkater, eliminarSkater, estadoSkat
 
 const port = 3000;
 
-const llavePrivada = "danilo";
-
 app.listen(process.env.PORT || port, () => console.log(`Server ON, http://localhost:${port}`));
 
 
@@ -107,7 +105,7 @@ app.post('/login', async (req, res) => {
             const token = jwt.sign({
                 data:usuario,
                 exp: Math.floor(Date.now() / 1000) + 5 * 60
-            }, llavePrivada);
+            }, process.env.JWT_KEY);
             
             res.send({
                 message: 'Autenticación exitosa',
@@ -124,7 +122,7 @@ app.post('/login', async (req, res) => {
 app.get('/perfil', (req, res) => {
     const { token } = req.query;
 
-    jwt.verify(token, llavePrivada, (error, skater) => {
+    jwt.verify(token, process.env.JWT_KEY, (error, skater) => {
         if (error) {
             res.status(500).send({
                 code: "500 Error interno del servidor ",
@@ -207,7 +205,7 @@ app.put('/skater', async (req, res) => {
         const token = jwt.sign({
             data:usuario,
             exp: Math.floor(Date.now() / 1000) + 5 * 60
-        }, llavePrivada);
+        }, process.env.JWT_KEY);
 
         res.send({
             message: 'Actualización del perfil exitosa',
