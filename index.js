@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+require('dotenv').config();
+
 const hbs = require('express-handlebars');
 const fileupload = require('express-fileupload');
 const fs = require('fs');
