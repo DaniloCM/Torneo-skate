@@ -167,13 +167,20 @@ app.post('/skater', async (req, res) => {
             throw respuesta.error;
         }
 
+        let comprobarError;
+
         foto.mv(`${__dirname}/assets/imgs/${nombreFoto}`, async (error) => {
 
             if (error) {
                 console.log(error);
-                // await eliminarSkater(respuesta.rows[0].id);
+                await eliminarSkater(respuesta.rows[0].id);
+                comprobarError = error;
             }
         });
+
+        if (comprobarError) {
+            return res.status(500).send(error);
+        }
 
         res.send({message: 'Actualización del perfil exitosa'});
     } catch (error) {
