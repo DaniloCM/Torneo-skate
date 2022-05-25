@@ -171,7 +171,7 @@ app.post('/skater', async (req, res) => {
 
             if (error) {
                 console.log(error);
-                await eliminarSkater(respuesta.rows[0].id);
+                // await eliminarSkater(respuesta.rows[0].id);
             }
         });
 

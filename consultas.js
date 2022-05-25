@@ -12,18 +12,6 @@ const pool = new Pool({
     }
 });
 
-console.log({
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    host: process.env.DB_HOST,
-    database: 'dd4bn2uuoo900v',
-    port: process.env.DB_PORT,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
-
-
 const listarSkaters = () => {
 
     const sql = 'SELECT * FROM skaters ORDER BY id';
