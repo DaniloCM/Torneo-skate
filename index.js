@@ -171,8 +171,8 @@ app.post('/skater', async (req, res) => {
 
         foto.mv(`${__dirname}/assets/imgs/${nombreFoto}`, async (error) => {
 
+            console.log(error);
             if (error) {
-                console.log(error);
                 await eliminarSkater(respuesta.rows[0].id);
                 comprobarError = error;
             }
