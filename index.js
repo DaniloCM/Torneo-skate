@@ -231,7 +231,8 @@ app.delete('/skater', async (req, res) => {
 
         fs.rm(`${__dirname}/assets/imgs/${nombreFoto}`, (error) => {
             if (error) {
-                throw error;
+                console.log(error);
+                res.send(error);
             }
         });
 
