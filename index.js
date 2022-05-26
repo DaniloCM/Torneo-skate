@@ -95,8 +95,6 @@ app.post('/login', async (req, res) => {
     try {
         const respuesta = await login(email, password);
         
-        console.log(respuesta.rows);
-        
         if(respuesta.rowCount == 0){
             res.status(403).send({ message: 'Credenciales inválidas'});
         } else {
@@ -157,7 +155,6 @@ app.get('/admin', async (req, res) => {
 app.post('/skater', async (req, res) => {
 
     try {
-        console.log("server");
         const { foto } = req.files;
 
         const nombreFoto = req.body.email + "-" + foto.name;
@@ -170,7 +167,6 @@ app.post('/skater', async (req, res) => {
         let comprobarError;
 
         foto.mv(`${__dirname}/assets/imgs/${nombreFoto}`, async (error) => {
-            console.log("error", error);
             if (error) {
                 await eliminarSkater(respuesta.rows[0].id);
                 comprobarError = error;

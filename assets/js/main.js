@@ -8,8 +8,6 @@ $(function(){
         repetirPassword = $("#input-registro-repetir-password").val(),
         añosExperiencia = $("#input-registro-años-experiencia").val();
 
-        console.log(nombre, password, repetirPassword,añosExperiencia);
-
         let pasaValidaciones = true;
 
         if (añosExperiencia < 0) {
@@ -28,8 +26,6 @@ $(function(){
             const foto = $('#input-registro-foto')[0].files[0];
             var formData = new FormData(formSinFoto);
             formData.append('file', foto);
-
-            console.log("validado");
     
             $.ajax({
                 method: 'post',
@@ -42,7 +38,6 @@ $(function(){
                     window.location = `/login?usuario=${nombre}`;
                 },
                 error: function(error){
-                    console.log(error);
                     if(error.status == 403){
                         alert(error.responseJSON.message);
                     } else {

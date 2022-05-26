@@ -74,8 +74,6 @@ const actualizarSkater = async (id, nuevaInformacion) => {
 const eliminarSkater = async (id) => {
 
     try {
-        
-        console.log("consulta", id);
 
         const config = {
             text: "DELETE FROM skaters WHERE id = $1 RETURNING *",
